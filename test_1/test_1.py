@@ -60,7 +60,7 @@ ax1.set_title('Retta di calibrazione')
 ax1.legend()
 
 # Save the linear fit plot as a PNG file
-fig1.savefig('test_1/Calibration.png')
+fig1.savefig('test_1/png/Calibration.png')
 
 # Create the plot for the exponential fit
 fig2, ax2 = plt.subplots()
@@ -72,7 +72,7 @@ ax2.set_title('Caratteristica I-V')
 ax2.legend()
 
 # Save the exponential fit plot as a PNG file
-fig2.savefig('test_1/I-V.png')
+fig2.savefig('test_1/png/I-V.png')
 
 # Show the plots
 plt.show()

@@ -45,7 +45,7 @@ ax.axis('off')
 table = ax.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc='center')
 
 # Save the table as a PNG file
-plt.savefig('/home/chiara/SP_lab3/test_1/I-V_tab.png')
+plt.savefig('/home/chiara/SP_lab3/test_1/png/I-V_tab.png')
 
 # Show the plot (optional)
 # plt.show()
