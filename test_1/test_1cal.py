@@ -4,11 +4,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Creare un nuovo workbook e selezionare il foglio attivo
+# Create a new workbook and select the active sheet
 wb = Workbook()
 ws = wb.active
 
-# Aggiungere i dati alla tabella
+# Add data for the table
 data = [
     ["Oscilloscopio", "Multimetro", "Errore oscilloscopio", "Errore multimetro"],
     [0.1, 0.0983, 0.001, 0.001],
@@ -24,19 +24,19 @@ data = [
 for row in data:
     ws.append(row)
 
-# Definire l'intervallo della tabella
+# Define the range for the table
 tab = Table(displayName="Tabella1", ref="A1:D5")
 
-# Aggiungere uno stile alla tabella
+# Add a style to the table
 style = TableStyleInfo(name="TableStyleMedium9", showFirstColumn=False,
                        showLastColumn=False, showRowStripes=True, showColumnStripes=True)
 tab.tableStyleInfo = style
 
-# Aggiungere la tabella al foglio
+# Add the table to the sheet
 ws.add_table(tab)
 
-# Salvare il file
-wb.save('/home/chiara/SP_lab3/test_1/test_1cal.xlsx')
+# Save the workbook
+wb.save('/home/chiara/SP_lab3/test_1/xslx/test_1cal.xlsx')
 
 # Convert the data to a pandas DataFrame
 df = pd.DataFrame(data[1:], columns=data[0])
@@ -49,6 +49,12 @@ table = ax.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc
 
 # Save the table as a PNG file
 plt.savefig('/home/chiara/SP_lab3/test_1/png/Calibration_tab.png')
+
+# Save the data to a text file
+with open('/home/chiara/SP_lab3/test_1/txt/test_1cal.txt', 'w') as f:
+    f.write('\t'.join(data[0]) + '\n')
+    for row in data[1:]:
+        f.write('\t'.join(map(str, row)) + '\n')
 
 # Show the plot (optional)
 # plt.show()

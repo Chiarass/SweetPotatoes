@@ -40,7 +40,7 @@ tab.tableStyleInfo = style
 ws.add_table(tab)
 
 # Save the workbook
-wb.save('/home/chiara/SP_lab3/test_1/test_1expS.xlsx')
+wb.save('/home/chiara/SP_lab3/test_1/xslx/test_1expS.xlsx')
 
 # Convert the data to a pandas DataFrame
 df = pd.DataFrame(data[1:], columns=data[0])
@@ -53,6 +53,12 @@ table = ax.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc
 
 # Save the table as a PNG file
 plt.savefig('/home/chiara/SP_lab3/test_1/png/I-V_tabS.png')
+
+# Save the data to a text file
+with open('/home/chiara/SP_lab3/test_1/txt/test_1expS.txt', 'w') as f:
+    f.write('\t'.join(data[0]) + '\n')
+    for row in data[1:]:
+        f.write('\t'.join(map(str, row)) + '\n')
 
 # Show the plot (optional)
 # plt.show()

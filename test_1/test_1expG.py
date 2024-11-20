@@ -10,7 +10,7 @@ ws = wb.active
 
 # Add data for the table
 data = [
-    ["Tensione", "Corrente", "Errore tensione", "Errore corrente"],
+     ["Tensione", "Corrente", "Errore tensione", "Errore corrente"],
     [0.1, 35*10**-3, 0.03, 0.003],
     [0.12, 60*10**-3, 0.03, 0.003],
     [0.14, 94*10**-3, 0.03, 0.003],
@@ -41,7 +41,7 @@ tab.tableStyleInfo = style
 ws.add_table(tab)
 
 # Save the workbook
-wb.save('/home/chiara/SP_lab3/test_1/test_1expG.xlsx')
+wb.save('/home/chiara/SP_lab3/test_1/xslx/test_1expG.xlsx')
 
 # Convert the data to a pandas DataFrame
 df = pd.DataFrame(data[1:], columns=data[0])
@@ -54,6 +54,12 @@ table = ax.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc
 
 # Save the table as a PNG file
 plt.savefig('/home/chiara/SP_lab3/test_1/png/I-V_tabG.png')
+
+# Save the data to a text file
+with open('/home/chiara/SP_lab3/test_1/txt/test_1expG.txt', 'w') as f:
+    f.write('\t'.join(data[0]) + '\n')
+    for row in data[1:]:
+        f.write('\t'.join(map(str, row)) + '\n')
 
 # Show the plot (optional)
 # plt.show()
